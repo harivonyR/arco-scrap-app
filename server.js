@@ -79,7 +79,7 @@ async function handleBrowser(){
                     })
                 })
         }
-    },60000)
+    },1020000)
 }
 
 
