@@ -88,10 +88,10 @@ async function handleBrowser(){
 async function handleScraping(req,res,status){
     if (status.onScrap===false){   // no scraping on, so start it
         status.onScrap = true;
-            console.log('Scrap on')                              
+            console.log('>> Scrap on <<')                              
         
         let data = await fetchData()   
-            console.log('Scrap end')
+            console.log('<< Scrap end >>')
 
         return data
     }
