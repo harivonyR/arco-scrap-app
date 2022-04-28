@@ -1,12 +1,13 @@
-const puppeteer = require('puppeteer')
-const sleep = require('./helper')
+/*
+    LOGIN management
+*/
 const fs = require('fs')
+const sleep = require('./helper')
 require('dotenv').config()
 
+// get credential from .env
 userName = process.env.USER
 passWord = process.env.PASSWORD
-
-//console.log(process.env.USER)
 
 var session = {
     expired : false
@@ -30,7 +31,6 @@ async function sessionExpired(page){
 async function login(page){                         // login page
     console.log('[👍] login ready ');
 
-
     //await sleep(4000)
     await page.waitForSelector('#userName')
     await page.type('#userName',userName,{delai:50});
@@ -41,12 +41,6 @@ async function login(page){                         // login page
     
     sleep(5000)
     console.log('[👍] Login Done ');
-
-    // try{
-    //     fs.unlinkSync(`./public/assets/login.png`);
-    // }catch(e){
-    //     console.log(e)
-    // }
 }
 
 module.exports = {login,sessionExpired}
