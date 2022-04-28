@@ -29,30 +29,32 @@ async function createPage(browser){
     return page
 }
 
+/* Login at the first time */
 async function firstLogin(){
-    await page.goto('https://service.europe.arco.biz/ktmthinclient/ValidationLogin.aspx')
+    await page.goto('https://service.europe.arco.biz/ktmthinclient/ValidationLogin.aspx')   // page navigate to the main page
         .then(async ()=>{
             console.log('[👍] Login page opened')
-            await login(page)
+            await login(page)                                                               // fill credential for login
         })
-        .catch((e)=>console.log("Go to Login page erro :: "+e))
+        .catch((e)=>console.log("[i] Go to Login page error :: "+e))
 }
 
+/* RESTART browser */
 const restartBrowser = async()=>{
     try{
-        await browser.close()
+        await browser.close()               // try to close last used browser
     }
-    catch(e){
-        console.log("error on restart ::: browser not defined yet")
+    catch(e){                               // there is no browser to close
+        console.log("[i] error on browser close :: browser already undefined")
     }
-    finally{
-        browser = await createBrowser()
-        page = await createPage(browser)
-        await firstLogin(page)
+    finally{                                // in any case,     
+        browser = await createBrowser()     // create a browser
+        page = await createPage(browser)    // create a page
+        await firstLogin(page)              // do the login
     }
 }
 
-//await restartBrowser()
+/* DATA FETCH from arco-site */
 async function fetchData(){
 
     // RUN puppeteer
@@ -77,9 +79,10 @@ async function fetchData(){
         .then(()=>console.log("[👍] validation page opened"))
         .catch((e)=>console.log('Goto validation Fail page'))
     
-        // Wait for selector
-        await page.waitForSelector('.x-grid3-row-table tr',{visible:true,timeout: 0})
+        // Wait for table selector before scraping
+        await page.waitForSelector('.x-grid3-row-table tr',{visible:true,timeout: 5000})
             .then(()=>console.log('Selector ok'))
+    
 
     let rows = await page.evaluate(
             ()=> Array.from(window.document.querySelectorAll('.x-grid3-row-table tr'))
@@ -96,22 +99,18 @@ async function fetchData(){
                 return data
             })
     )
-    
-// Filter data
-    rows = rows.filter((e)=>e.status=="Ready")
-    console.log("Total file scraped "+rows.length)
-    //console.log(rows);
+            
+    rows = rows.filter((e)=>e.status=="Ready")      // Record only ready data
+    console.log("Total file scraped "+rows.length)  // Log the data length
 
-    // Saving file
+    /* Saving file */
         await freeBtachFile()           // delete last batch file saved
         await saveToCsv(rows,'batch');  // await csv file before conversion
         csvToXls('batch');
-        //await browser.close();        
-        return (rows);
-        // close the browser
 
+        return (rows);
     }
-    catch(e){
+    catch(e){                           // error unhandeled
         console.log("validation page not reached :: "+e)
         await restartBrowser()
         return []
