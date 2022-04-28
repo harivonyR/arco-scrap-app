@@ -1,17 +1,18 @@
 const puppeteer = require('puppeteer');
-//const login = require('./user');
 const {saveToCsv,csvToXls,freeBtachFile} = require('./file');
 const {login} = require('./pageCheck')
-//const sleep = require('./helper');
 const fs = require ('fs');
-//const login = require('./user');
-// const login = require('./user');
 
 // DATA
-//let link = 'https://service.europe.arco.biz/ktmthinclient/Validation.aspx';
-var browser;
+var browser;    
 var page;
 
+const link1 = 'https://servi.europe.arco.biz/ktmthinclient/Validation.aspx';  // standard link
+const link2 = 'https://service.europe.arco.biz/ktmthinclient2/Validation.aspx'; // link used on error 
+
+let link = link1                                                                // use standard link as default link
+
+/* create browser */
 async function createBrowser(){
     const browser = await puppeteer.launch({
         ignoreHTTPSErrors: true,
@@ -23,6 +24,7 @@ async function createBrowser(){
     return browser
 }
 
+/* create page from a browser */
 async function createPage(browser){
     const page = await browser.newPage();
     console.log('[👍] new page created  ..');
@@ -31,7 +33,7 @@ async function createPage(browser){
 
 /* Login at the first time */
 async function firstLogin(){
-    await page.goto('https://service.europe.arco.biz/ktmthinclient/ValidationLogin.aspx')   // page navigate to the main page
+    await page.goto(link)   // page navigate to the main page
         .then(async ()=>{
             console.log('[👍] Login page opened')
             await login(page)                                                               // fill credential for login
@@ -57,7 +59,7 @@ const restartBrowser = async()=>{
 /* DATA FETCH from arco-site */
 async function fetchData(){
 
-    // RUN puppeteer
+    // Seesion expiration check 
     // await sessionExpired(page)
     //     .then(async(expired)=>{
     //         if(expired===true){
@@ -75,14 +77,14 @@ async function fetchData(){
     //     .catch((e)=>console.log("ERR catch sessionExpiored"))
     
     try{
-        await page.goto('https://service.europe.arco.biz/ktmthinclient/Validation.aspx')
+        await page.goto(link)
         .then(()=>console.log("[👍] validation page opened"))
         .catch((e)=>console.log('Goto validation Fail page'))
     
         // Wait for table selector before scraping
         await page.waitForSelector('.x-grid3-row-table tr',{visible:true,timeout: 5000})
             .then(()=>console.log('Selector ok'))
-    
+            // error on timeout
 
     let rows = await page.evaluate(
             ()=> Array.from(window.document.querySelectorAll('.x-grid3-row-table tr'))
@@ -111,9 +113,13 @@ async function fetchData(){
         return (rows);
     }
     catch(e){                           // error unhandeled
-        console.log("validation page not reached :: "+e)
+        console.log("[i] Validation page not reached :: "+e)
+        
+        if(link==link1) link = link2    // change link
+        else if(link==link2) link = link1
+        else console.log('[i] Error handlink link change at catch error')
         await restartBrowser()
-        return []
+        return []                       // send empty array ass error mssg for client side    
     }
 }
 
