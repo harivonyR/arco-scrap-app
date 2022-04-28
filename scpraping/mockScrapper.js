@@ -7,7 +7,7 @@ const fs = require ('fs');
 var browser;    
 var page;
 
-const link1 = 'https://servi.europe.arco.biz/ktmthinclient/Validation.aspx';  // standard link
+const link1 = 'https://service.europe.arco.biz/ktmthinclient/Validation.aspx';  // standard link
 const link2 = 'https://service.europe.arco.biz/ktmthinclient2/Validation.aspx'; // link used on error 
 
 let link = link1                                                                // use standard link as default link
