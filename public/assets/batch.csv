@@ -1,17 +1,13 @@
 index,batch,priority,client,document,date,status
-19,gem_hulshout-02- BATCH 7467756,5,cs_besturen_01_team3,2,4/25/2022 8:53:47 AM,Ready
-20,crem_hasselt-02- BATCH 7467788,5,cs_besturen_01_team3,1,4/25/2022 8:59:00 AM,Ready
-21,ocmw_rijkevorsel-04- BATCH 75553,5,cs_besturen_01_team3,1,4/25/2022 9:00:05 AM,Ready
-22,ocmw_retie-04- BATCH 7555370,5,cs_besturen_01_team3,2,4/25/2022 9:00:07 AM,Ready
-23,gem_heusden_zolder-MULTI- BATCH,5,cs_besturen_schaubroeck,11,4/25/2022 9:01:32 AM,Ready
-24,gem_geetbets-MULTI- BATCH 493481,5,cs_besturen_schaubroeck,6,4/25/2022 9:01:49 AM,Ready
-25,ocmw_oostrozebeke-MULTI- BATCH 3,5,cs_besturen_schaubroeck,2,4/25/2022 9:01:58 AM,Ready
-26,gem_kasterlee-03- BATCH 8993608,5,cs_besturen_01_team3,4,4/25/2022 9:04:06 AM,Ready
-27,gem_oostkamp-03- BATCH 8993617,5,cs_besturen_01_team3,4,4/25/2022 9:04:12 AM,Ready
-28,gem_malle-03- BATCH 8993619,5,cs_besturen_01_team3,7,4/25/2022 9:04:21 AM,Ready
-29,gem_wortegem_petegem-MULTI- BATC,5,cs_besturen_schaubroeck,6,4/25/2022 9:04:36 AM,Ready
-30,gem_wevelgem-MULTI- BATCH 356571,5,cs_besturen_schaubroeck,10,4/25/2022 9:04:44 AM,Ready
-31,stad_hasselt-02- BATCH 7467805,5,cs_besturen_01_team3,5,4/25/2022 9:05:01 AM,Ready
-32,gem_begijnendijk-MULTI- BATCH 59,5,cs_besturen_schaubroeck,4,4/25/2022 9:07:17 AM,Ready
-33,ocmw_bekkevoort-MULTI- BATCH 595,5,cs_besturen_schaubroeck,1,4/25/2022 9:07:26 AM,Ready
-34,gem_willebroek-05- BATCH 5396006,5,cs_besturen_01_team3,4,4/25/2022 9:08:34 AM,Ready
+19,agb_tielt-MULTI- BATCH 3707913,5,cs_besturen_schaubroeck,1,4/28/2022 9:45:17 AM,Ready
+21,stad_leuven-03- BATCH 9028735,5,cs_besturen_01_team3,18,4/28/2022 10:02:56 AM,Ready
+24,gem_diepenbeek-01- BATCH 8240969,5,cs_besturen_01_team3,1,4/28/2022 10:26:16 AM,Ready
+25,ocmw_bornem-MULTI- BATCH 5979602,5,cs_besturen_schaubroeck,1,4/28/2022 10:28:39 AM,Ready
+28,agb_ieper-MULTI- BATCH 4953226,5,cs_besturen_schaubroeck,1,4/28/2022 10:40:34 AM,Ready
+29,stad_herentals-02- BATCH 7493485,5,cs_besturen_01_team3,1,4/28/2022 10:42:00 AM,Ready
+30,gem_kortemark-MULTI- BATCH 57915,5,cs_besturen_schaubroeck,6,4/28/2022 10:42:30 AM,Ready
+31,gem_wevelgem-MULTI- BATCH 357847,5,cs_besturen_schaubroeck,1,4/28/2022 10:46:33 AM,Ready
+32,ocmw_zoutleeuw-MULTI- BATCH 3578,5,cs_besturen_schaubroeck,5,4/28/2022 10:46:55 AM,Ready
+33,agb_ieper_musea-MULTI- BATCH 495,5,cs_besturen_schaubroeck,1,4/28/2022 10:51:49 AM,Ready
+34,ocmw_mechelen-03- BATCH 9029382,5,cs_besturen_01_team3,3,4/28/2022 10:52:52 AM,Ready
+35,gem_wortegem_petegem-MULTI- BATC 4/28/2022 9:53:08 AM,5,cs_besturen_schaubroeck,1,4/28/2022 10:53:08 AM,Ready

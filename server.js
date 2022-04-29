@@ -2,13 +2,8 @@ const express = require ("express");
 const app = express();
 const path = require ("path")
 const fs = require ('fs');
-//const {emiter} = require('./event/EventEmmiter');
 const {fetchData,restartBrowser} = require ('./scpraping/mockScrapper');
-const sleep = require("./scpraping/helper");
-
-
-// const userName = process.env.USER
-// (()=>console.log(' username :'+userName))()
+const sleep = require("./scpraping/helper");   // async sleep method
 
 
 const PORT = process.env.PORT || 8080;
